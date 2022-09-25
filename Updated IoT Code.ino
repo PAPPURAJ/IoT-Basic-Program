@@ -1,15 +1,13 @@
 #include "FirebaseESP8266.h"
 #include <ESP8266WiFi.h>
 
+#define FIREBASE_HOST "iot-work-3fb2e-default-rtdb.firebaseio.com"  //Database link
+#define FIREBASE_AUTH "hWhes26LFnakkxeLPDneclih58N9iVLYekMOhzXC"  //Database secrate
 
+#define WIFI_SSID "PAPPURAJ"      //Router name
+#define WIFI_PASSWORD "00000000"  //Router password
 
-#define FIREBASE_HOST "iotdemo-c0d3f-default-rtdb.firebaseio.com"  //Database link
-#define FIREBASE_AUTH "fZgTbsoG2t6tevpagt9HDxf1c4P7pias3Yspsovb"  //Database secrate
-
-#define WIFI_SSID "Roboment"      //Router name
-#define WIFI_PASSWORD "roboment2018"  //Router password
-
-
+-------------------------------------------------------
 
 
 FirebaseData firebaseData,loadData;
@@ -84,26 +82,18 @@ void initFire(){
 
 
 void setup() {
-  pinSet();
- 
+
+  pinMode(D5,INPUT);
   Serial.begin(9600);
   initFire();
 
-  loadW("Test",1);
+  delay(500);
 
-  Serial.println("Load: "+loadR("Test"));
-  Serial.println("Sen: "+senR("Test"));
+  Firebase.setString(firebaseData, "/Hello","World" );
+
+  
    
 
-}
-
-
-
-void pinSet(){
-  pinMode(D1,INPUT);
-  pinMode(D5,INPUT);
-  pinMode(D6,OUTPUT);
-  
 }
 
 
@@ -111,41 +101,8 @@ void pinSet(){
 
 void loop() {
 
+  Serial.println("Sen: "+senR("Light"));
 
-    int LDR=analogRead(D1);
+  delay(500);
 
-
-    if(LDR==0){
-      Serial.println("LDR is on");
-      loadW("LDR",1);
-      digitalWrite(D6,1);
-    }else{
-        loadW("LDR",0);
-       Serial.println("LDR is off");
-       digitalWrite(D6,0);
-    }
-
-
-
-    
-
-
- // String val=loadR("Test");
-//  
-//    if(val=="1"){
-//      
-//      Serial.println("Light is on");
-//      digitalWrite(D6,1);
-//      
-//    }else{
-//      
-//      Serial.println("Light is off");
-//      digitalWrite(D6,0);
-//      
-//    }
-//   
-  
 }
-
-
-
