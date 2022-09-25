@@ -4,8 +4,8 @@
 #define FIREBASE_HOST "iotdemo-c0d3f-default-rtdb.firebaseio.com"  //Database link
 #define FIREBASE_AUTH "fZgTbsoG2t6tevpagt9HDxf1c4P7pias3Yspsovb"  //Database secrate
 
-#define WIFI_SSID "Roboment"      //Router name
-#define WIFI_PASSWORD "roboment2018"  //Router password
+#define WIFI_SSID "ID"      //Router name
+#define WIFI_PASSWORD "Password"  //Router password
 
 FirebaseData firebaseData,loadData;
 FirebaseJson json;
